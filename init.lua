@@ -93,14 +93,6 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- [[ Settting cmd ]]
--- See `:help vim.cmd`
-
-vim.cmd 'set expandtab'
-vim.cmd 'set tabstop=2'
-vim.cmd 'set softtabstop=2'
-vim.cmd 'set shiftwidth=2'
-
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -161,6 +153,12 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Tab settings
+vim.opt_local.expandtab = true
+vim.opt_local.tabstop = 2
+vim.opt_local.softtabstop = 2
+vim.opt_local.shiftwidth = 2
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -789,7 +787,7 @@ require('lazy').setup({
     end,
   },
 
-  { --Tmux-nvim navigation
+  { -- Tmux-nvim navigation
     'christoomey/vim-tmux-navigator',
     cmd = {
       'TmuxNavigateLeft',
