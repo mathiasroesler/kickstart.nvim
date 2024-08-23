@@ -207,6 +207,14 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Keymap for formatting R code
+vim.api.nvim_create_user_command('FormatR', function()
+  local file = vim.fn.expand '%' -- Get the current file path
+  vim.cmd('!Rscript -e \'styler::style_file("' .. file .. '")\'')
+end, {})
+
+vim.keymap.set('n', '<leader>fr', ':FormatR<CR>', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -588,8 +596,6 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         -- gopls = {},
-        pyright = {},
-        r_language_server = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -675,7 +681,6 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        R = { 'jupytext' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
