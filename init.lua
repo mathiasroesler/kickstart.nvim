@@ -188,9 +188,9 @@ vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
 -- Buffer navigation
-vim.keymap.set('n', '<leader>bn', ':bn<CR>')
-vim.keymap.set('n', '<leader>bp', ':bp<CR>')
-vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+vim.keymap.set('n', '<leader>bn', ':BufferNext<CR>')
+vim.keymap.set('n', '<leader>bp', ':BufferPrevious<CR>')
+vim.keymap.set('n', '<leader>bc', ':BufferClose<CR>')
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
