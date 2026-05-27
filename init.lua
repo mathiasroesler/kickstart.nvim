@@ -773,4 +773,6 @@ do
     },
   }
   vim.cmd.colorscheme 'vague'
+
+  pcall(require, 'custom.plugins')
 end
