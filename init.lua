@@ -124,11 +124,6 @@ do
   vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
   vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
-  -- Buffer navigation
-  vim.keymap.set('n', '<leader>bn', ':BufferNext<CR>')
-  vim.keymap.set('n', '<leader>bp', ':BufferPrevious<CR>')
-  vim.keymap.set('n', '<leader>bc', ':BufferClose<CR>')
-
   -- Keybinds to make split navigation easier.
   --  Use CTRL+<hjkl> to switch between windows
   vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
