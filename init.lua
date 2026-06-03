@@ -772,10 +772,19 @@ do
   -- [[ Floating command line ]]
   vim.o.cmdheight = 0
   require("vim._core.ui2").enable({})
-  vim.pack.add{ "https://github.com/rachartier/tiny-cmdline.nvim"}
+  vim.pack.add{ gh 'rachartier/tiny-cmdline.nvim'}
   require("tiny-cmdline").setup({
       on_reposition = require("tiny-cmdline").adapters.blink,
   })
 
-  pcall(require, 'custom.plugins')
+  -- [[ Neodoc ]]
+  vim.pack.add{ gh 'sunnytamang/neodoc.nvim'}
+  require('neodoc').setup {
+      python_interpreter = 'python3',
+      docstring_style = 'numpy',
+      enable_keymaps = true,
+      keymap = '<leader>g',
+      use_custom_template = true,
+    }
+
 end
