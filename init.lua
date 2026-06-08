@@ -787,4 +787,8 @@ do
       use_custom_template = true,
     }
 
+  -- [[ Barbar ]]
+  vim.pack.add{gh 'romgrk/barbar.nvim'}
+
+
 end
