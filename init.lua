@@ -577,6 +577,7 @@ do
       local enabled_filetypes = {
         -- lua = true,
         python = true,
+        toml = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 5000 }
@@ -590,6 +591,7 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       python = { "isort", "black" },
+      toml = { "tombi" }
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       --
@@ -704,7 +706,7 @@ do
   require('nvim-treesitter.install').prefer_git = true
   require('nvim-treesitter.install').compilers = { "cc", "gcc", "clang" }
   -- Ensure basic parsers are installed
-  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' }
+  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'toml'}
   require('nvim-treesitter').install(parsers)
 
   ---@param buf integer
