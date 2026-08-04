@@ -19,6 +19,7 @@ do
 
   -- Make line numbers default
   vim.o.number = true
+  vim.o.cmdheight = 0
   -- You can also add relative line numbers, to help with jumping.
   --  Experiment for yourself to see if you like it!
   -- vim.o.relativenumber = true
@@ -772,13 +773,57 @@ do
   vim.cmd.colorscheme 'vague'
 
   -- [[ Floating command line ]]
-  vim.o.cmdheight = 0
-  require("vim._core.ui2").enable({})
-  vim.pack.add{ gh 'rachartier/tiny-cmdline.nvim'}
-  require("tiny-cmdline").setup({
-      on_reposition = require("tiny-cmdline").adapters.blink,
-  })
+  vim.pack.add {
+    gh 'MunifTanjim/nui.nvim',
+    gh 'rcarriga/nvim-notify',
+    gh 'folke/noice.nvim',
+  }
 
+  vim.notify = require 'notify'
+
+  require('noice').setup {
+    cmdline = {
+      enabled = true,
+      view = 'cmdline_popup',
+    },
+
+    popupmenu = {
+      enabled = true,
+      backend = 'nui',
+    },
+
+    messages = {
+      enabled = true,
+    },
+
+    notify = {
+      enabled = true,
+      view = 'notify',
+    },
+
+    lsp = {
+      progress = {
+        enabled = true,
+      },
+      hover = {
+        enabled = true,
+      },
+      signature = {
+        enabled = true,
+      },
+      override = {
+        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        ['vim.lsp.util.stylize_markdown'] = true,
+      },
+    },
+
+    presets = {
+      command_palette = true,
+      bottom_search = false,
+      long_message_to_split = true,
+      lsp_doc_border = true,
+    },
+  }
   -- [[ Neodoc ]]
   vim.pack.add{ gh 'sunnytamang/neodoc.nvim'}
   require('neodoc').setup {
